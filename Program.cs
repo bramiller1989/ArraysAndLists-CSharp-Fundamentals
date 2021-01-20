@@ -42,11 +42,66 @@ namespace ArraysAndLists
             Console.WriteLine("Reversed name: " + reversed);
         }
 
+        public void Exercise3()
+        {
+            var numbers = new List<int>();
+
+            while (numbers.Count < 5)
+            {
+                Console.Write("Enter a number: ");
+                var number = Convert.ToInt32(Console.ReadLine());
+
+                if (numbers.Contains(number))
+                {
+                    Console.WriteLine("You've previously entered " + number);
+                    continue;
+                }
+
+                numbers.Add(number);
+            }
+
+            numbers.Sort();
+
+            foreach (var number in numbers)
+                Console.WriteLine(number);
+        }
+
+        public void Exercise4()
+        {
+            var numbers = new List<int>();
+
+            while (true)
+            {
+                Console.Write("Enter a number (or 'Quit' to exit): ");
+                var input = Console.ReadLine();
+
+                if (input.ToLower() == "quit" || String.IsNullOrWhiteSpace(input))
+                    break;
+
+                numbers.Add(Convert.ToInt32(input));
+            }
+
+            var uniques = new List<int>();
+            foreach (var number in numbers)
+            {
+                if (!uniques.Contains(number))
+                    uniques.Add(number);
+            }
+
+            Console.WriteLine("Unique numbers:");
+            foreach (var number in uniques)
+                Console.WriteLine(number);
+        }
+
         static void Main(string[] args)
         {
             Program program = new Program();
             program.Exercise1();
             program.Exercise2();
+            program.Exercise3();
+            program.Exercise4();
+
+
         }
     }
 }
